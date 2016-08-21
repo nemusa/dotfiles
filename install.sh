@@ -1,6 +1,4 @@
 #!/bin/bash
-
-git pull
 rsync --exclude ".gitignore_global" --exclude ".git/" --exclude "install.sh" --exclude "README.md" -av . ~
 
 # Git setup
