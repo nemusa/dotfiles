@@ -23,7 +23,9 @@ source $PY01_REPOS/not_a_secret/bashrc
 alias st='git status'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 alias br='git branch'
-alias got='git'
+alias sl='ls' # Chill
+alias got='git' # Mein Gott, was ist das?!
+alias gut='git'
 
 # Enable git autocomplete
 . $HOME/.git-completion.bash
@@ -32,7 +34,12 @@ alias got='git'
 alias delpyc='find . -name "*.pyc" -delete'
 
 # System tools
-psgrep() {
-    ps axuf | grep -v grep | grep "$@" -i --color=auto;
-}
+asuser() { sudo -u $1 /bin/bash; }
+
+psgrep() { sleep 3; ps aux | grep -v grep | grep "$@" -i --color=auto; }
+
+pskill() { sleep 4; psgrep $1 | awk '{ print $2 }' | xargs kill; }
+
+whothe() { sleep 4; sudo lsof -i :$1;}
+
 
