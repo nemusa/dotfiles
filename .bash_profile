@@ -1,6 +1,8 @@
 #!/bin/bash
-# Project setup
+# Additional applications path
+PATH=$PATH:/Applications/
 
+# Projects setup
 WORKON_HOME=$HOME/Virtualenvs
 PROJECT_HOME=$HOME/Projects
 mkdir -p $WORKON_HOME
@@ -22,6 +24,9 @@ alias st='git status'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 alias br='git branch'
 alias got='git'
+
+# Enable git autocomplete
+. $HOME/.git-completion.bash
 
 # Python tools
 alias delpyc='find . -name "*.pyc" -delete'
