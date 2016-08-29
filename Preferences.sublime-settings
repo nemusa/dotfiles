@@ -4,6 +4,8 @@
     // Columns in which to display vertical rulers
     "rulers": [120],
 
+     "font_size": 14,
+
     // Set to true to insert spaces when tab is pressed
     "translate_tabs_to_spaces": true,
 

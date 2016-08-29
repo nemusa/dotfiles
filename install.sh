@@ -1,6 +1,9 @@
 #!/bin/bash
 rsync --exclude ".gitignore_global" --exclude ".git/" --exclude "install.sh" --exclude "README.md" -av . ~
 
+# Setup secret profile script
+touch $HOME/.bash_profile_secret
+
 # Git setup
 rsync -v .gitignore_global ~/.gitignore
 git config --global core.excludesfile ~/.gitignore
