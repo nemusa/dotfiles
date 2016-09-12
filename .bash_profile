@@ -13,7 +13,9 @@ source $HOME/.bash_profile_secret
 
 source /usr/local/bin/virtualenvwrapper.sh
 
-cd $PROJECT_HOME
+# Project directory shortcut
+alias proj='cd $PROJECT_HOME'
+proj
 
 # Py 01 utility scripts
 export PY01_REPOS=$PROJECT_HOME
