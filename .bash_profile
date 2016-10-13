@@ -45,12 +45,15 @@ source $PY01_REPOS/not_a_secret/bashrc
 alias st='git status'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 alias br='git branch'
-alias sl='ls' # Chill
+alias prune='git remote prune origin'
 alias got='git' # Mein Gott, was ist das?!
 alias gut='git'
 
 # Enable git autocomplete
 . $HOME/.git-completion.bash
+
+# Other aliases
+alias sl='ls' # Chill
 
 # Python tools
 alias delpyc='find . -name "*.pyc" -delete'
