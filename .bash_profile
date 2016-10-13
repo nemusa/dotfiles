@@ -64,4 +64,6 @@ pskill() { sleep 4; psgrep $1 | awk '{ print $2 }' | xargs kill; }
 
 whothe() { sleep 4; sudo lsof -i :$1;}
 
+# Docker tools
+docker-shell() { docker exec -i -t $1 /bin/bash; }
 
