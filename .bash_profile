@@ -1,6 +1,6 @@
 #!/bin/bash
 # Additional applications path
-PATH=$PATH:/Applications/
+PATH=/opt/puppetlabs/bin/:$PATH:/Applications/
 
 # Projects setup
 WORKON_HOME=$HOME/Virtualenvs
