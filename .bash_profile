@@ -2,16 +2,17 @@
 # Additional applications path
 PATH=/opt/puppetlabs/bin/:$PATH:/Applications/
 
-# Projects setup
-WORKON_HOME=$HOME/Virtualenvs
-PROJECT_HOME=$HOME/Projects
-mkdir -p $WORKON_HOME
-mkdir -p $PROJECT_HOME
-
 # Execute secret setup
 source $HOME/.bash_profile_secret
 
-source /usr/local/bin/virtualenvwrapper.sh
+# Pyenv configuration
+export PATH="/Users/nemusa/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# Projects setup
+PROJECT_HOME=$HOME/Projects
+mkdir -p $PROJECT_HOME
 
 # Project directory shortcut
 alias proj='cd $PROJECT_HOME'
@@ -69,4 +70,9 @@ whothe() { sleep 4; sudo lsof -i :$1;}
 
 # Docker tools
 docker-shell() { docker exec -i -t $1 /bin/bash; }
+
+# Machine Learning
+alias octave='/usr/local/octave/3.8.0/bin/octave-3.8.0; exit;'
+
+
 
