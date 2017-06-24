@@ -75,7 +75,7 @@ whothe() { sleep 4; sudo lsof -i :$1;}
 docker-shell() { docker exec -i -t $1 /bin/bash; }
 
 # Machine Learning
-alias octave="/usr/local/octave/3.8.0/bin/octave-3.8.0; exit;"
+alias octave="/usr/local/octave/3.8.0/bin/octave-3.8.0;"
 
 
 
