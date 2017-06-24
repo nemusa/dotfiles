@@ -40,7 +40,10 @@ complete -F _complete_ssh_hosts ssh
 
 # Py 01 utility scripts
 export PY01_REPOS=$PROJECT_HOME
-source $PY01_REPOS/not_a_secret/bashrc
+PY01_SCRIPT=$PY01_REPOS/not_a_secret/bashrc
+if [ -f $PY01_SCRIPT ]; then
+   source $PY01_SCRIPT
+fi
 
 # Git aliases
 alias st='git status'
@@ -72,7 +75,7 @@ whothe() { sleep 4; sudo lsof -i :$1;}
 docker-shell() { docker exec -i -t $1 /bin/bash; }
 
 # Machine Learning
-alias octave='/usr/local/octave/3.8.0/bin/octave-3.8.0; exit;'
+alias octave="/usr/local/octave/3.8.0/bin/octave-3.8.0; exit;"
 
 
 
