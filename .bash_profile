@@ -5,8 +5,9 @@ PATH=/opt/puppetlabs/bin/:$PATH:/Applications/
 # Execute secret setup
 source $HOME/.bash_profile_secret
 
-# Pyenv configuration
-export PATH="/Users/nemusa/.pyenv/bin:$PATH"
+# pyenv  and pyenv-virtualenv configuration
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
