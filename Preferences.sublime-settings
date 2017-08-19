@@ -1,38 +1,45 @@
-// Settings in here override those in "Default/Preferences.sublime-settings",
-// and are overridden in turn by file type specific settings.
 {
-    // Columns in which to display vertical rulers
-    "rulers": [120],
-
-     "font_size": 14,
-
-    // Set to true to insert spaces when tab is pressed
-    "translate_tabs_to_spaces": true,
-
-    // Set to "none" to turn off drawing white space, "selection" to draw only the
-    // white space within the selection, and "all" to draw all white space
-    "draw_white_space": "all",
-
-    // Set to true to removing trailing white space on save
-    "trim_trailing_white_space_on_save": true,
-
-    // Set to true to ensure the last line of the file ends in a newline
-    // character when saving
-    "ensure_newline_at_eof_on_save": true,
-
-    // Disables horizontal scrolling if enabled.
-    // May be set to true, false, or "auto", where it will be disabled for
-    // source code, and otherwise enabled.
-    "word_wrap": false,
-
-    // These files will still show up in the side bar, but won't be included in
-    // Goto Anything or Find in Files
-    "binary_file_patterns": [
-        "*.jpg", "*.jpeg", "*.png", "*.gif", "*.ttf", "*.tga", "*.dds", "*.ico", "*.eot",
-        "*.pdf", "*.swf", "*.jar", "*.zip", "*.woff", "*.woff2", "*.css",
+    "binary_file_patterns":
+    [
+        "*.jpg",
+        "*.jpeg",
+        "*.png",
+        "*.gif",
+        "*.ttf",
+        "*.tga",
+        "*.dds",
+        "*.ico",
+        "*.eot",
+        "*.pdf",
+        "*.swf",
+        "*.jar",
+        "*.zip",
+        "*.woff",
+        "*.woff2",
+        "*.css"
     ],
-    // folder_exclude_patterns and file_exclude_patterns control which files
-    // are listed in folders on the side bar. These can also be set on a per-
-    // project basis.
-    "folder_exclude_patterns": [".svn", ".git", ".hg", "CVS", ".terraform"],
+    "draw_white_space": "all",
+    "ensure_newline_at_eof_on_save": true,
+    "folder_exclude_patterns":
+    [
+        ".svn",
+        ".hg",
+        "CVS",
+        ".terraform",
+        ".cache",
+        "__pycache__",
+    ],
+    "font_size": 13,
+    "ignored_packages":
+    [
+        "Vintage"
+    ],
+    "rulers":
+    [
+        120
+    ],
+    "translate_tabs_to_spaces": true,
+    "trim_trailing_white_space_on_save": true,
+    "word_wrap": "auto",
+    "save_on_focus_lost": true,
 }
