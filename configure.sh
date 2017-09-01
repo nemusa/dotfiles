@@ -13,5 +13,9 @@ PROJECT_HOME=$HOME/Projects
 ln -sfv $HOME/.ssh/config $PROJECT_HOME/ssh_config
 ln -sfv $HOME/.ssh/known_hosts $PROJECT_HOME/known_hosts
 
+# iCloud folder for shared files
+mkdir -p $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/shared_projects
+ln -sfv $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/shared_projects $PROJECT_HOME/
+
 # Sublime Text setup
 rsync -v Preferences.sublime-settings $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
