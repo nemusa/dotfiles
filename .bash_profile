@@ -1,6 +1,6 @@
 #!/bin/bash
 # Additional applications path
-PATH=/usr/local/opt/node@6/bin:/opt/puppetlabs/bin/:$PATH:/Applications/
+PATH=/usr/local/opt/node@6/bin:$PATH:/Applications
 
 # Execute secret setup
 source $HOME/.bash_profile_secret
