@@ -2,3 +2,4 @@
 .python-version
 .aws/
 .ipynb_checkpoints/
+__pycache__/
