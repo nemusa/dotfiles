@@ -1,12 +1,22 @@
 #!/bin/bash
-rsync --exclude ".gitignore_global" --exclude ".git/" --exclude "install.sh" --exclude "README.md" -av . ~
+rsync --exclude ".gitignore_global" --exclude ".gitconfig" --exclude ".git/" --exclude "install.sh" --exclude "README.md" -av . ~
 
 # Setup secret profile script
 touch $HOME/.bash_profile_secret
 
 # Git setup
 rsync -v .gitignore_global ~/.gitignore
-git config --global core.excludesfile ~/.gitignore
+
+EMAIL=$(git config --global --get user.email)
+rsync -v .gitconfig ~/.gitconfig
+
+if [ -z "$EMAIL" ]; then
+    printf "\nProvide email address for git:\n"
+    read EMAIL
+fi
+
+printf "\nUsing address $EMAIL for git\n\n"
+git config --global user.email "$EMAIL"
 
 # Set up some directory shortcuts
 PROJECT_HOME=$HOME/Projects

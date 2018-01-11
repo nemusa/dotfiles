@@ -78,5 +78,9 @@ docker-shell() { docker exec -i -t $1 /bin/bash; }
 # Machine Learning
 alias octave="/usr/local/octave/3.8.0/bin/octave-3.8.0;"
 
+# Checksum checking
+alias checkmd5='openssl md5'
+alias checksha1='openssl sha1'
+alias checksha256='openssl dgst -sha256'
 
 

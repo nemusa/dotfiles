@@ -1,0 +1,9 @@
+[core]
+    excludesfile = ~/.gitignore
+    editor = nano
+
+[user]
+    name = Zuzanna Hartleb
+
+[push]
+    default = current
