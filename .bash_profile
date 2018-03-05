@@ -19,6 +19,9 @@ mkdir -p $PROJECT_HOME
 alias proj='cd $PROJECT_HOME'
 proj
 
+# Time in prompt
+export PS1='\D{%T} \h:\W \u\$ '
+
 # SSH completion from ssh config and known hosts
 _complete_ssh_hosts ()
 {
@@ -82,5 +85,3 @@ alias octave="/usr/local/octave/3.8.0/bin/octave-3.8.0;"
 alias checkmd5='openssl md5'
 alias checksha1='openssl sha1'
 alias checksha256='openssl dgst -sha256'
-
-
