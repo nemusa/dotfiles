@@ -2,9 +2,6 @@
 # Additional applications path
 PATH=/usr/local/opt/node@6/bin:$PATH:/Applications
 
-# Execute secret setup
-source $HOME/.bash_profile_secret
-
 # pyenv  and pyenv-virtualenv configuration
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -21,6 +18,16 @@ proj
 
 # Time in prompt
 export PS1='\D{%T} \h:\W \u\$ '
+
+# Py 01 utility scripts
+export PY01_REPOS=$PROJECT_HOME
+PY01_SCRIPT=$PY01_REPOS/not_a_secret/bashrc
+if [ -f $PY01_SCRIPT ]; then
+   source $PY01_SCRIPT
+fi
+
+# Execute secret setup
+source $HOME/.bash_profile_secret
 
 # SSH completion from ssh config and known hosts
 _complete_ssh_hosts ()
@@ -41,13 +48,6 @@ _complete_ssh_hosts ()
         return 0
 }
 complete -F _complete_ssh_hosts ssh
-
-# Py 01 utility scripts
-export PY01_REPOS=$PROJECT_HOME
-PY01_SCRIPT=$PY01_REPOS/not_a_secret/bashrc
-if [ -f $PY01_SCRIPT ]; then
-   source $PY01_SCRIPT
-fi
 
 # Git aliases
 alias st='git status'
