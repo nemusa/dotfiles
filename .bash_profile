@@ -21,7 +21,7 @@ export PS1='\D{%T} \h:\W \u\$ '
 
 # Py 01 utility scripts
 export PY01_REPOS=$PROJECT_HOME
-PY01_SCRIPT=$PY01_REPOS/not_a_secret/bashrc
+PY01_SCRIPT=$PY01_REPOS/thisisfine-stuff/bashrc
 if [ -f $PY01_SCRIPT ]; then
    source $PY01_SCRIPT
 fi
