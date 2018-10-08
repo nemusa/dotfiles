@@ -1,11 +1,19 @@
 #!/bin/bash
-sudo easy_install pip
-sudo pip install virtualenv
-
 xcode-select --install
 
-git clone https://github.com/pyenv/pyenv.git
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+
+pyenv install 2.7.15
 
 CFLAGS="-I$(brew --prefix openssl)/include" \
 LDFLAGS="-L$(brew --prefix openssl)/lib" \

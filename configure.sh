@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copy configuration files
 rsync --exclude ".gitignore_global" --exclude ".gitconfig" --exclude ".git/" --exclude "install.sh" --exclude "README.md" -av . ~
 
 # Setup secret profile script
@@ -29,3 +30,11 @@ ln -sfv $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/shared_projects $PRO
 
 # Sublime Text setup
 rsync -v Preferences.sublime-settings $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
+
+# Setup pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
