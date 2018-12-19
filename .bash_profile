@@ -87,3 +87,9 @@ alias octave="/usr/local/octave/3.8.0/bin/octave-3.8.0;"
 alias checkmd5='openssl md5'
 alias checksha1='openssl sha1'
 alias checksha256='openssl dgst -sha256'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '~/google-cloud-sdk/path.bash.inc' ]; then . '~/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '~/google-cloud-sdk/completion.bash.inc' ]; then . '~/google-cloud-sdk/completion.bash.inc'; fi

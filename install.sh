@@ -21,3 +21,6 @@ LDFLAGS="-L$(brew --prefix openssl)/lib" \
 PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.5.0
 # PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.6.3
 
+CFLAGS="-I$(brew --prefix openssl)/include" \
+LDFLAGS="-L$(brew --prefix openssl)/lib" \
+PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.7.0
