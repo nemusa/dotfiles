@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  # https://hub.docker.com/_/rabbitmq
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: test123
+    restart: always
+
+  # https://hub.docker.com/_/postgres
+  postgres:
+    image: postgres:11-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=mysecretpassword
+    restart: always
+
+  pgadmin:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

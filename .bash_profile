@@ -19,13 +19,6 @@ proj
 # Time in prompt
 export PS1='\D{%T} \h:\W \u\$ '
 
-# Py 01 utility scripts
-export PY01_REPOS=$PROJECT_HOME
-PY01_SCRIPT=$PY01_REPOS/thisisfine-stuff/bashrc
-if [ -f $PY01_SCRIPT ]; then
-   source $PY01_SCRIPT
-fi
-
 # Execute secret setup
 source $HOME/.bash_profile_secret
 
@@ -57,9 +50,10 @@ alias prune='git remote prune origin'
 alias got='git' # Mein Gott, was ist das?!
 alias gut='git'
 
-# Enable git autocomplete
+# Enable git and rabbitmq autocomplete
 . $HOME/.git-completion.bash
-. /usr/local/etc/bash_completion.d/helm
+. $HOME/.rabbitmq-completion.bash
+. $HOME/.kubectl-completion.bash
 
 # Other aliases
 alias sl='ls' # Chill
@@ -90,7 +84,10 @@ alias checksha1='openssl sha1'
 alias checksha256='openssl dgst -sha256'
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '~/google-cloud-sdk/path.bash.inc' ]; then . '~/google-cloud-sdk/path.bash.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/google-cloud-sdk/path.bash.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '~/google-cloud-sdk/completion.bash.inc' ]; then . '~/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then . "$HOME/google-cloud-sdk/completion.bash.inc"; fi
+
+# The next line enables shell command completion for helm.
+if [ -f '/usr/local/etc/bash_completion.d/helm' ]; then . '/usr/local/etc/bash_completion.d/helm'; fi

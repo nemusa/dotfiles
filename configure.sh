@@ -1,12 +1,17 @@
 #!/bin/bash
 # Copy configuration files
-rsync --exclude ".gitignore_global" --exclude ".gitconfig" --exclude ".git/" --exclude "install.sh" --exclude "README.md" -av . ~
+rsync --exclude ".gitignore_global" --exclude ".gitconfig" --exclude ".git/" \
+      --exclude "install.sh" --exclude "README.md" --exclude "rabbitmqadmin" \
+      --exclude "dev" -av . ~
 
 # Setup secret profile script
 touch $HOME/.bash_profile_secret
 
 # Git setup
 rsync -v .gitignore_global ~/.gitignore
+
+# Rabbitmq admin setup
+rsync -v rabbitmqadmin /usr/local/bin/rabbitmqadmin
 
 EMAIL=$(git config --global --get user.email)
 rsync -v .gitconfig ~/.gitconfig
@@ -23,10 +28,6 @@ git config --global user.email "$EMAIL"
 PROJECT_HOME=$HOME/Projects
 ln -sfv $HOME/.ssh/config $PROJECT_HOME/ssh_config
 ln -sfv $HOME/.ssh/known_hosts $PROJECT_HOME/known_hosts
-
-# iCloud folder for shared files
-mkdir -p $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/shared_projects
-ln -sfv $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/shared_projects $PROJECT_HOME/
 
 # Sublime Text setup
 rsync -v Preferences.sublime-settings $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
