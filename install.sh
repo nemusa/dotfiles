@@ -4,6 +4,7 @@ xcode-select --install
 # /usr/bin/ruby -e "$(curlma -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew install pyenv
+brew install kubernetes-helm
 git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
 
 export PYENV_ROOT="$HOME/.pyenv"

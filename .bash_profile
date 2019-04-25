@@ -59,6 +59,7 @@ alias gut='git'
 
 # Enable git autocomplete
 . $HOME/.git-completion.bash
+. /usr/local/etc/bash_completion.d/helm
 
 # Other aliases
 alias sl='ls' # Chill
