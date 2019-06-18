@@ -83,6 +83,8 @@ alias checkmd5='openssl md5'
 alias checksha1='openssl sha1'
 alias checksha256='openssl dgst -sha256'
 
+export CLOUDSDK_PYTHON=$(which python)
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/google-cloud-sdk/path.bash.inc"; fi
 

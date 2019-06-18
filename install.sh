@@ -28,3 +28,13 @@ PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.6.8
 CFLAGS="-I$(brew --prefix openssl)/include" \
 LDFLAGS="-L$(brew --prefix openssl)/lib" \
 PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.7.0
+
+wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-251.0.0-darwin-x86_64.tar.gz
+tar -xzf google-cloud-sdk-251.0.0-darwin-x86_64.tar.gz
+rm -rf ~/google-cloud-sdk/
+mv google-cloud-sdk/ ~/
+export CLOUDSDK_PYTHON=$(which python)
+bash ~/google-cloud-sdk/install.sh
+bash ~/google-cloud-sdk/bin/gcloud init
+~/google-cloud-sdk/bin/gcloud compute config-ssh --ssh-key-file ~/.ssh/id_rsa
+
