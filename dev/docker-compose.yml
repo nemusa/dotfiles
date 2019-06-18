@@ -7,21 +7,24 @@ services:
       - 5672:5672
       - 15672:15672
     environment:
-      RABBITMQ_DEFAULT_USER: admin
-      RABBITMQ_DEFAULT_PASS: test123
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
     restart: always
 
-  # https://hub.docker.com/_/postgres
+#   https://hub.docker.com/_/postgres
   postgres:
-    image: postgres:11-alpine
+    image: mdillon/postgis:11-alpine
     ports:
       - 5432:5432
     environment:
       - POSTGRES_PASSWORD=mysecretpassword
     restart: always
+    volumes:
+    - type: bind
+      source: ./init-postgres.sql
+      target: /docker-entrypoint-initdb.d/init-postgres.sql
 
-  pgadmin:
-    image: adminer
-    restart: always
+  redis:
+    image: redis:5-alpine
     ports:
-      - 8080:8080
+      - 6379:6379
