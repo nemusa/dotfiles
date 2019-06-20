@@ -97,3 +97,4 @@ if [ -f '/usr/local/etc/bash_completion.d/helm' ]; then . '/usr/local/etc/bash_c
 # Set up the env
 export RABBITMQ_TEST_HOST='localhost:5672'
 export DB_TEST_HOST='localhost'
+export REDIS_TEST_HOST='localhost'
