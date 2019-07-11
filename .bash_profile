@@ -1,6 +1,6 @@
 #!/bin/bash
 # Additional applications path
-PATH=/usr/local/opt/node@6/bin:$PATH:/Applications:$HOME/google-cloud-sdk/bin
+PATH=/usr/local/opt/node@6/bin:$PATH:/Applications:$HOME/google-cloud-sdk/bin:$HOME/bin
 
 # pyenv  and pyenv-virtualenv configuration
 export PYENV_ROOT="$HOME/.pyenv"
