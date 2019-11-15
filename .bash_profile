@@ -95,6 +95,6 @@ if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then . "$HOME/google-clo
 if [ -f '/usr/local/etc/bash_completion.d/helm' ]; then . '/usr/local/etc/bash_completion.d/helm'; fi
 
 # Set up the env
-export RABBITMQ_TEST_HOST='localhost:5672'
+export RABBITMQ_TEST_HOST='localhost'
 export DB_TEST_HOST='localhost'
 export REDIS_TEST_HOST='localhost'
