@@ -1,6 +1,9 @@
 #!/bin/bash
+# Silence ZSH migration warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # Additional applications path
-PATH=/usr/local/opt/node@6/bin:$PATH:/Applications:$HOME/google-cloud-sdk/bin:$HOME/bin
+PATH=/usr/local/opt/node@6/bin:/Applications:$HOME/google-cloud-sdk/bin:$HOME/bin:/usr/local/opt/gnu-getopt/bin:$PATH
 
 # pyenv  and pyenv-virtualenv configuration
 export PYENV_ROOT="$HOME/.pyenv"
@@ -72,11 +75,11 @@ whothe() { sleep 4; sudo lsof -i :$1;}
 
 awslogin() { aws sts get-session-token --serial-number "$MFA_SERIAL" --token-code $1; }
 
+make-list() { make -rpn | sed -n -e '/^$/ { n ; /^[^ ]*:/p ; }'; }
+
 # Docker tools
 docker-shell() { docker exec -i -t $1 /bin/bash; }
 
-# Machine Learning
-alias octave="/usr/local/octave/3.8.0/bin/octave-3.8.0;"
 
 # Checksum checking
 alias checkmd5='openssl md5'
