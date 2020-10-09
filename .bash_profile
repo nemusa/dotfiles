@@ -7,9 +7,14 @@ PATH=/usr/local/opt/node@6/bin:/Applications:$HOME/google-cloud-sdk/bin:$HOME/bi
 
 # pyenv  and pyenv-virtualenv configuration
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="/usr/local/opt/openssl/bin:$PYENV_ROOT/bin:$PATH"
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="/usr/local/opt/openssl/bin:$GOENV_ROOT/bin:$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+eval "$(goenv init -)"
+
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
 
 # Projects setup
 PROJECT_HOME=$HOME/Projects
