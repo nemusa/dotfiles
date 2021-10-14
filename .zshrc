@@ -1,16 +1,12 @@
-#!/bin/bash
-# Silence ZSH migration warning
-export BASH_SILENCE_DEPRECATION_WARNING=1
-
 # Additional applications path
 PATH=/usr/local/opt/node@6/bin:/Applications:$HOME/google-cloud-sdk/bin:$HOME/bin:/usr/local/opt/gnu-getopt/bin:$PATH
 
 # pyenv  and pyenv-virtualenv configuration
 export PYENV_ROOT="$HOME/.pyenv"
 export GOENV_ROOT="$HOME/.goenv"
-export PATH="/usr/local/opt/openssl/bin:$GOENV_ROOT/bin:$PYENV_ROOT/bin:$PATH"
+export PATH="/usr/local/opt/openssl/bin:$GOENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 eval "$(goenv init -)"
 
 export PATH="$GOROOT/bin:$PATH"
@@ -25,30 +21,11 @@ alias proj='cd $PROJECT_HOME'
 proj
 
 # Time in prompt
-export PS1='\D{%T} \h:\W \u\$ '
+# export PS1='\D{%T} \h:\W \u\$ '
 
 # Execute secret setup
-source $HOME/.bash_profile_secret
+source $HOME/.profile_secret
 
-# SSH completion from ssh config and known hosts
-_complete_ssh_hosts ()
-{
-        COMPREPLY=()
-        cur="${COMP_WORDS[COMP_CWORD]}"
-        comp_ssh_hosts=`cat ~/.ssh/known_hosts | \
-                        cut -f 1 -d ' ' | \
-                        sed -e s/,.*//g | \
-                        grep -v ^# | \
-                        uniq | \
-                        grep -v "\[" ;
-                cat ~/.ssh/config | \
-                        grep "^Host " | \
-                        awk '{print $2}'
-                `
-        COMPREPLY=( $(compgen -W "${comp_ssh_hosts}" -- $cur))
-        return 0
-}
-complete -F _complete_ssh_hosts ssh
 
 # Git aliases
 alias st='git status'
@@ -57,11 +34,7 @@ alias br='git branch'
 alias prune='git remote prune origin'
 alias got='git' # Mein Gott, was ist das?!
 alias gut='git'
-
-# Enable git and rabbitmq autocomplete
-. $HOME/.git-completion.bash
-. $HOME/.rabbitmq-completion.bash
-. $HOME/.kubectl-completion.bash
+alias python3.6='python3'
 
 # Other aliases
 alias sl='ls' # Chill
@@ -94,13 +67,10 @@ alias checksha256='openssl dgst -sha256'
 export CLOUDSDK_PYTHON=$(which python)
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/google-cloud-sdk/path.bash.inc"; fi
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then . "$HOME/google-cloud-sdk/completion.bash.inc"; fi
-
-# The next line enables shell command completion for helm.
-if [ -f '/usr/local/etc/bash_completion.d/helm' ]; then . '/usr/local/etc/bash_completion.d/helm'; fi
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
 # Set up the env
 export RABBITMQ_TEST_HOST='localhost'
