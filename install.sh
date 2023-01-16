@@ -2,60 +2,44 @@
 xcode-select --install
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+brew install libffi \
+  xz # installs lzma lib \
+  pyenv \
+  pyenv-virtualenv
 
-brew update
-brew tap fishtown-analytics/dbt
-brew install dbt
+brew install postgresql
 
-brew install coreutils
-brew install pyenv
-brew install kubernetes-helm
-brew install wget
-brew install zlib bzip2
+brew install openjdk@11
+#brew tap fishtown-analytics/dbt
+#brew install dbt
+#
+#brew install coreutils
+#brew install kubernetes-helm
+#brew install wget
+#brew install zlib bzip2
+brew install postgresql
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+sudo ln -sfn /opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
+#
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#
+eval "$(pyenv init -)"
 
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
+export LDFLAGS="-L$(brew --prefix libffi)/lib -L$(brew --prefix xz)/lib"
+export CFLAGS="-I$(brew --prefix libffi)/include -I$(brew --prefix xz)/include"
 
-export CPPFLAGS="-I$(brew --prefix zlib)/include -I$(brew --prefix bzip2)/include"
+pyenv install 3.7.13
+pyenv install 3.9.11
+pyenv global 3.7.13 3.9.11
 
+#WARNING: The Python ctypes extension was not compiled. Missing the libffi lib?
+#WARNING: The Python lzma extension was not compiled. Missing the lzma lib?
 
-#CFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix sqlite)/include -I$(brew --prefix bzip2)/include -I$(brew --prefix zlib)/include" \
-#LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix sqlite)/lib -L$(brew --prefix bzip2)/lib -L$(brew --prefix zlib)/lib" \
-#pyenv install 3.6.13
+#
+curl -s "https://get.sdkman.io" | bash
 
-LDFLAGS="-L$(brew --prefix zlib)/lib -L$(brew --prefix bzip2)/lib" \
-pyenv install --patch 3.6.5 < <(curl -sSL https://github.com/python/cpython/commit/8ea6353.patch\?full_index\=1)
-
-CFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix zlib)/include -I$(brew --prefix sqlite)/include" \
-LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix zlib)/lib -L$(brew --prefix sqlite)/lib" \
-pyenv install 3.9.1
-
-CFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix zlib)/include -I$(brew --prefix sqlite)/include" \
-LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix zlib)/lib -L$(brew --prefix sqlite)/lib" \
-pyenv install 3.7.10
-
-CFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix zlib)/include -I$(brew --prefix sqlite)/include" \
-LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix zlib)/lib -L$(brew --prefix sqlite)/lib" \
-pyenv install 3.8.10
-
-pyenv global 3.6.5 3.7.10 3.8.10 3.9.1
-
-wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-251.0.0-darwin-x86_64.tar.gz
-tar -xzf google-cloud-sdk-251.0.0-darwin-x86_64.tar.gz
-rm -rf ~/google-cloud-sdk/
-mv google-cloud-sdk/ ~/
-export CLOUDSDK_PYTHON=$(which python)
-bash ~/google-cloud-sdk/install.sh
-bash ~/google-cloud-sdk/bin/gcloud init
-~/google-cloud-sdk/bin/gcloud compute config-ssh --ssh-key-file ~/.ssh/id_rsa
-
-
-git clone https://github.com/syndbg/goenv.git ~/.goenv
-
-# Show hidden files in finder
-defaults write com.apple.finder AppleShowAllFiles TRUE
-killall Finder
+## Show hidden files in finder
+#defaults write com.apple.finder AppleShowAllFiles TRUE
+#killall Finder
