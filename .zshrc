@@ -9,6 +9,19 @@ alias gut='git'
 # Other aliases
 alias sl='ls' # Chill
 
+# Interactive profiles
+alias aws-profile='export AWS_PROFILE=$(sed -n "s/\[profile \(.*\)\]/\1/gp" ~/.aws/config | fzf)'
+
+function aws_persist() {
+  rm -f ~/.aws/credentials
+  cat <<EOF >> ~/.aws/credentials
+[default]
+aws_access_key_id=$(echo "$AWS_ACCESS_KEY_ID")
+aws_secret_access_key=$(echo "$AWS_SECRET_ACCESS_KEY")
+aws_session_token=$(echo "$AWS_SESSION_TOKEN")
+EOF
+}
+
 # System tools
 asuser() { sudo -u $1 /bin/bash; }
 
@@ -25,6 +38,9 @@ docker-shell() { docker exec -i -t $1 /bin/bash; }
 alias checkmd5='openssl md5'
 alias checksha1='openssl sha1'
 alias checksha256='openssl dgst -sha256'
+
+# Set PATH for apps
+export PATH="$HOME/Applications:$PATH"
 
 # Set PATH, MANPATH, etc., for Homebrew.'
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -47,6 +63,8 @@ CURRENT=$(pwd)
 if [ "$CURRENT" = "$HOME" ]; then
     cd $PROJECT_HOME
 fi
+source $HOME/.environment
+
 
 # Docker setup
 export DOCKER_BUILDKIT=1

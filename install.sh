@@ -9,7 +9,7 @@ brew install libffi \
   pyenv-virtualenv
 
 brew install postgresql
-
+brew install fzf
 brew install openjdk@11
 #brew tap fishtown-analytics/dbt
 #brew install dbt
