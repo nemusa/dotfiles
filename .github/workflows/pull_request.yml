@@ -1,0 +1,40 @@
+name: Pull Request
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+env:
+  # The number of upstream dependencies to build with dbt at the build_test stage. Default value is 0, only integer values are accepted.
+  DBT_NB_DOWNSTREAM_LAYERS: "1"
+
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+
+  print_inputs:
+    name: print_inputs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print the inputs to STDOUT
+        run: echo Selected settings are downstream ${{ inputs.NB_DOWNSTREAM_LAYERS }} upstream ${{ inputs.NB_UPSTREAM_LAYERS }}
+
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    container: ghcr.io/dbt-labs/dbt-redshift:1.4.0
+    if: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run tests
+        run: echo Running tests
+
+
