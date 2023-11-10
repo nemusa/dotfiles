@@ -31,8 +31,9 @@ export LDFLAGS="-L$(brew --prefix libffi)/lib -L$(brew --prefix xz)/lib"
 export CFLAGS="-I$(brew --prefix libffi)/include -I$(brew --prefix xz)/include"
 
 pyenv install 3.7.13
-pyenv install 3.9.11
-pyenv global 3.7.13 3.9.11
+pyenv install 3.9.18
+pyenv install 3.10.13
+pyenv global 3.7.13 3.9.18 3.10.13
 
 #WARNING: The Python ctypes extension was not compiled. Missing the libffi lib?
 #WARNING: The Python lzma extension was not compiled. Missing the lzma lib?
