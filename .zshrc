@@ -5,6 +5,7 @@ alias br='git branch'
 alias prune='git remote prune origin'
 alias got='git' # Mein Gott, was ist das?!
 alias gut='git'
+alias docker-compose='docker compose'
 
 # Other aliases
 alias sl='ls' # Chill
@@ -40,7 +41,7 @@ alias checksha1='openssl sha1'
 alias checksha256='openssl dgst -sha256'
 
 # Set PATH for apps
-export PATH="$HOME/Applications:$PATH"
+export PATH="$HOME/Applications:$HOME/apps:$PATH"
 
 # Set PATH, MANPATH, etc., for Homebrew.'
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -68,6 +69,9 @@ source $HOME/.environment
 
 # Docker setup
 export DOCKER_BUILDKIT=1
+
+# Set default platform for docker to avoid differences with Gitlab CI
+export DOCKER_DEFAULT_PLATFORM=linux/arm64
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/zhartleb/Applications/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/zhartleb/Applications/google-cloud-sdk/path.zsh.inc'; fi

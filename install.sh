@@ -10,7 +10,9 @@ brew install libffi \
 
 brew install postgresql
 brew install fzf
-brew install openjdk@11
+brew install azure-cli
+
+#brew install openjdk@11
 #brew tap fishtown-analytics/dbt
 #brew install dbt
 #
@@ -18,9 +20,8 @@ brew install openjdk@11
 #brew install kubernetes-helm
 #brew install wget
 #brew install zlib bzip2
-brew install postgresql
 
-sudo ln -sfn /opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
+#sudo ln -sfn /opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
 #
 #export PYENV_ROOT="$HOME/.pyenv"
 #export PATH="$PYENV_ROOT/bin:$PATH"
@@ -30,18 +31,17 @@ eval "$(pyenv init -)"
 export LDFLAGS="-L$(brew --prefix libffi)/lib -L$(brew --prefix xz)/lib"
 export CFLAGS="-I$(brew --prefix libffi)/include -I$(brew --prefix xz)/include"
 
-pyenv install 3.9.18
-pyenv install 3.10.13
-pyenv install 3.11.7
-pyenv install 3.12.1
-pyenv global 3.10.13 3.11.7 3.12.1
+pyenv install 3.10.14
+pyenv install 3.11.9
+pyenv install 3.12.4
+pyenv global 3.10.14 3.11.9 3.12.4
 
 
 #WARNING: The Python ctypes extension was not compiled. Missing the libffi lib?
 #WARNING: The Python lzma extension was not compiled. Missing the lzma lib?
 
 #
-curl -s "https://get.sdkman.io" | bash
+#curl -s "https://get.sdkman.io" | bash
 
 ## Show hidden files in finder
 #defaults write com.apple.finder AppleShowAllFiles TRUE
